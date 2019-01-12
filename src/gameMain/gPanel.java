@@ -43,7 +43,7 @@ public gWindow parent;
     {
         Graphics2D g=(Graphics2D)gs;        
         g.drawImage(gInit.new_game_bg, 0, 0, null);
-        gLevel.drawSteps(g);
+        //gLevel.drawSteps(g);
     }
     
      
@@ -52,11 +52,7 @@ public gWindow parent;
     @Override
     public void keyPressed (KeyEvent e)
     {
-        if (e.getKeyCode() == KeyEvent.VK_A) 
-            {
-                gInit.player_beat = 1;
-                System.out.println(".keyPressed()");
-            }
+        if (e.getKeyCode() == KeyEvent.VK_A)  System.out.println("Bit ="+gInit.player_beat);
         if (e.getKeyCode()==KeyEvent.VK_D) gInit.player_beat = 2;
         if (e.getKeyCode()==KeyEvent.VK_SPACE) gInit.GameStarted =true;
     }

@@ -122,10 +122,8 @@ public gLevel ()
     
       
       
-    public static void drawSteps(Graphics2D g) {
-        new Thread(new Runnable() {
-          @Override
-          public void run() {
+    public static void drawSteps(Graphics2D g) { 
+        {
             try {
               if (gInit.RoundStarted==false){
             for (int i=0; i<16; i++)
@@ -145,8 +143,7 @@ public gLevel ()
             } catch (Exception e) {
               System.err.println(e.getMessage());
             }
-          }
-        }).start();
+        }
     }
 
 }

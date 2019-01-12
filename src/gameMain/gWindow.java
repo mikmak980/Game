@@ -27,8 +27,11 @@ public class gWindow extends JFrame {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setVisible(true); //pokaĹĽ okno
         gLevel s = new gLevel();
+        //new Thread( () ->{
         gLevel.testPlay(s);
         gLevel.mainPlay(s);
+        //});
+        
         System.out.println(gInit.lives);
     }
     
