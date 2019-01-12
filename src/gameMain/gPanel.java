@@ -22,14 +22,14 @@ public gWindow parent;
         gInit.restartGame();
         System.out.println(gInit.lives);
         
-        //addMouseListener(new MouseAdapter()
-        //{
-        //public void mouseClicked(MouseEvent me){
-        //      if(me.getX()>717 && me.getX()<937 && me.getY()>643 && me.getY()<728)  System.exit(1);
-        //      if(me.getX()>0 && me.getX()<512 && me.getY()>0 && me.getY()<385) gInit.player_answer="MOL";
-        //      if(me.getX()>513 && me.getX()<1024 && me.getY()>0 && me.getY()<385) gInit.player_answer="DUR";
-        //    }
-        //});
+        addMouseListener(new MouseAdapter()
+        {
+        public void mouseClicked(MouseEvent me){
+              if(me.getX()>717 && me.getX()<937 && me.getY()>643 && me.getY()<728)  System.exit(1);
+              if(me.getX()>0 && me.getX()<512 && me.getY()>0 && me.getY()<385) gInit.player_answer="MOL";
+              if(me.getX()>513 && me.getX()<1024 && me.getY()>0 && me.getY()<385) gInit.player_answer="DUR";
+            }
+        });
         
         addKeyListener(this);
         
@@ -52,8 +52,6 @@ public gWindow parent;
     @Override
     public void keyPressed (KeyEvent e)
     {
-        setFocusable(true);
-        requestFocusInWindow();
         if (e.getKeyCode() == KeyEvent.VK_A) 
             {
                 gInit.player_beat = 1;

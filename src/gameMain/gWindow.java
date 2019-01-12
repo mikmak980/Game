@@ -36,6 +36,8 @@ public class gWindow extends JFrame {
         //setLayout(new GridLayout(1,1)); //ustaw rozkład 
     Toolkit tk = Toolkit.getDefaultToolkit();
     gPanel GPanel = new gPanel(this);
+    GPanel.setFocusable(true);
+    GPanel.requestFocusInWindow();
     add(GPanel);
     //MainMenu MM = new MainMenu(this);
     //add(MM);
