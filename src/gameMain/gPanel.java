@@ -14,7 +14,7 @@ import javax.swing.*;
  *
  * @author Mikołaj
  */
-public class gPanel extends JPanel {    
+public class gPanel extends JPanel implements KeyListener {    
 public gWindow parent;   
     public gPanel (gWindow parent)
     {   
@@ -31,22 +31,7 @@ public gWindow parent;
             }
         });
         
-        addKeyListener(new KeyAdapter()
-        {
-            @Override
-        public void keyPressed (KeyEvent e)
-            {
-                if (e.getKeyCode() == KeyEvent.VK_A) 
-                    {
-                        gInit.player_beat = 1;
-                        System.out.println(".keyPressed()");
-                    }
-                if (e.getKeyCode()==KeyEvent.VK_D) gInit.player_beat = 2;
-                if (e.getKeyCode()==KeyEvent.VK_SPACE) gInit.GameStarted =true;
-            }
-        @Override public void keyReleased(KeyEvent e) {}
-        @Override public void keyTyped(KeyEvent e) {}
-        });
+        addKeyListener(this);
         
     }   
         
@@ -60,6 +45,24 @@ public gWindow parent;
         g.drawImage(gInit.new_game_bg, 0, 0, null);
         gLevel.drawSteps(g);
     }
+    
+     
+    
+    
+    @Override
+    public void keyPressed (KeyEvent e)
+    {
+        setFocusable(true);
+        if (e.getKeyCode() == KeyEvent.VK_A) 
+            {
+                gInit.player_beat = 1;
+                System.out.println(".keyPressed()");
+            }
+        if (e.getKeyCode()==KeyEvent.VK_D) gInit.player_beat = 2;
+        if (e.getKeyCode()==KeyEvent.VK_SPACE) gInit.GameStarted =true;
+    }
+    @Override public void keyReleased(KeyEvent e) {}
+    @Override public void keyTyped(KeyEvent e) {}
     
     
 
