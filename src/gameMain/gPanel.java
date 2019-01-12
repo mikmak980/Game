@@ -53,6 +53,7 @@ public gWindow parent;
     public void keyPressed (KeyEvent e)
     {
         setFocusable(true);
+        requestFocusInWindow();
         if (e.getKeyCode() == KeyEvent.VK_A) 
             {
                 gInit.player_beat = 1;
