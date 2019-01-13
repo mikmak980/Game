@@ -92,9 +92,9 @@ public gLevel ()
                 gInit.actionTime = System.currentTimeMillis(); 
                 while ((System.currentTimeMillis()-gInit.actionTime)<600)
                     {
-                        if (gInit.player_beat == 1)  gInit.kick.start();
-                        if (gInit.player_beat == 2) gInit.snare.start();
-                    }    
+                       // if (gInit.player_beat == 1) gInit.kick.start();
+                       // if (gInit.player_beat == 2) gInit.snare.start();
+                   }   
                 if (s.DrumTable[i] == gInit.player_beat) gInit.StepCompleted=true;
                 if (gInit.StepCompleted == false) gInit.RoundCompleted=false;
                 gInit.reload(gInit.kick);
@@ -106,8 +106,8 @@ public gLevel ()
                     gInit.reload(gInit.chord[s.ChordTable[i]+12]);
                 }
             }
-            if (gInit.player_answer != s.key) gInit.lives--;
-            //if (gInit.RoundCompleted==false) gInit.lives--;
+            if (gInit.player_answer != s.key) gInit.RoundCompleted=false;
+            if (gInit.RoundCompleted==false) gInit.lives--;
             gInit.RoundCompleted=true;
             
         //} catch (Exception e) {

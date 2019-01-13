@@ -52,8 +52,15 @@ public gWindow parent;
     @Override
     public void keyPressed (KeyEvent e)
     {
-        if (e.getKeyCode() == KeyEvent.VK_A)  System.out.println("Bit ="+gInit.player_beat);
-        if (e.getKeyCode()==KeyEvent.VK_D) gInit.player_beat = 2;
+        if (e.getKeyCode() == KeyEvent.VK_A)  {
+            gInit.player_beat = 1;
+            gInit.kick.start();
+           //System.out.println(gInit.player_beat);
+        }
+        if (e.getKeyCode()==KeyEvent.VK_D) {
+            gInit.player_beat = 2;
+            gInit.snare.start();
+        }
         if (e.getKeyCode()==KeyEvent.VK_SPACE) gInit.GameStarted =true;
     }
     @Override public void keyReleased(KeyEvent e) {}
