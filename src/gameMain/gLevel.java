@@ -12,8 +12,9 @@ import java.util.*;
  */
 public class gLevel {
 int difficulty;
-int DrumTable[] = new int[16];   
+int DrumTable[] = new int[16]; 
 int ChordTable[] = new int[16];
+short player_beat_table[] = new short[16];
 String [] KeyTable = {"DUR", "MOL"};
 String key;
 
@@ -80,9 +81,8 @@ public gLevel ()
             for (int i=0; i<16; i++)
             {
                 gInit.player_beat=0;
-                gInit.StepCompleted=false;
+                gInit.RoundCompleted=true;
                 gInit.click.start();
-                
                 if (s.ChordTable[i] != 0) 
                     {
                         if(s.key == "DUR") gInit.chord[s.ChordTable[i]].start();
@@ -95,28 +95,30 @@ public gLevel ()
                        // if (gInit.player_beat == 1) gInit.kick.start();
                        // if (gInit.player_beat == 2) gInit.snare.start();
                    }   
-                if (s.DrumTable[i] == gInit.player_beat) gInit.StepCompleted=true;
-                if (gInit.StepCompleted == false) gInit.RoundCompleted=false;
+                s.player_beat_table[i]=gInit.player_beat;
                 gInit.reload(gInit.kick);
                 gInit.reload(gInit.snare);
                 gInit.reload(gInit.click);
+                
                 if (i % 4 == 0)
                 {
                     gInit.reload(gInit.chord[s.ChordTable[i]]);
                     gInit.reload(gInit.chord[s.ChordTable[i]+12]);
                 }
             }
-            if (gInit.player_answer != s.key) gInit.RoundCompleted=false;
+            for (int i=0; i<16;i++) {
+                if (s.DrumTable[i]!=s.player_beat_table[i]) gInit.RoundCompleted=false;
+                s.player_beat_table[i]=0;
+            }
             if (gInit.RoundCompleted==false) gInit.lives--;
             gInit.RoundCompleted=true;
+            
             
         //} catch (Exception e) {
         //      System.err.println(e.getMessage());
         //   }
         //  }
         //}).start();  
-        System.out.println(gInit.player_answer);
-        System.out.println(s.key);
     }
     
     

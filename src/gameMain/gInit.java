@@ -35,8 +35,6 @@ public static long actionTime;
 
 public static long points;
 
-public static boolean StepCompleted;
-
 public static boolean RoundCompleted;
 
 
