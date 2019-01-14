@@ -26,10 +26,10 @@ public class gWindow extends JFrame {
         //setLayout(new CLSwitcher());
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setVisible(true); //pokaĹĽ okno
-        gLevel s = new gLevel();
+        //gLevel s = new gLevel();
         //new Thread( () ->{
-        gLevel.testPlay(s);
-        gLevel.mainPlay(s);
+        //gLevel.testPlay(s);
+        //gLevel.mainPlay(s);
         //});
         
         System.out.println(gInit.lives);
@@ -38,10 +38,13 @@ public class gWindow extends JFrame {
     private void initGUI(){
         //setLayout(new GridLayout(1,1)); //ustaw rozkład 
     Toolkit tk = Toolkit.getDefaultToolkit();
-    gPanel GPanel = new gPanel(this);
-    GPanel.setFocusable(true);
-    GPanel.requestFocusInWindow();
-    add(GPanel);
+    //gPanel GPanel = new gPanel(this);
+    //GPanel.setFocusable(true);
+    //GPanel.requestFocusInWindow();
+    Tutorial t = new Tutorial(this);
+    t.setFocusable(true);
+    t.requestFocusInWindow();
+    add(t);
     //MainMenu MM = new MainMenu(this);
     //add(MM);
     }

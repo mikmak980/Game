@@ -46,7 +46,7 @@ public static Image step_crcl;
 
 public static Image step_crcl_comp;
 
-
+public static Image tutorial;
 
 public static Clip chord[];
 
@@ -55,6 +55,7 @@ public static Clip kick;
 public static Clip snare;
 
 public static Clip click;
+    
 
 public static void loadData()
 {
@@ -62,6 +63,7 @@ public static void loadData()
     new_game_bg = loadImage("images/GameBG.png");
     step_crcl = loadImage("images/step_crcl.png");
     step_crcl_comp = loadImage("images/step_crcl_comp.png");
+    tutorial = loadImage("images/Tutorial.png");
     chord = new Clip[25];
     //akodry durowe
     chord[1] = loadClip("sounds/A.wav");
