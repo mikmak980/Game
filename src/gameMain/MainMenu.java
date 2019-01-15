@@ -8,30 +8,19 @@ package gameMain;
 import java.awt.Container;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.*;
 import javax.swing.*;
 
 /**
  *
  * @author Mikołaj
  */
-public class MainMenu extends JPanel {
+public class MainMenu extends JPanel implements MouseListener {
 public gWindow parent;    
     public MainMenu (gWindow parent)
     {
         this.parent=parent;
-        addMouseListener(new MouseAdapter()
-        {
-        public void mouseClicked(MouseEvent me){
-              if(me.getX()>300 && me.getX()<700 && me.getY()>613 && me.getY()<724)  System.exit(1);
-              
-              if(me.getX()>300 && me.getX()<700 && me.getY()>260 && me.getY()<390)  {
-              setVisible(false);
-              
-              }
-            }
-        });
+        addMouseListener(this);
     }
     
     @Override
@@ -40,5 +29,20 @@ public gWindow parent;
         g.drawImage(gInit.main_menu_bg, 0, 0, null);
     }
     
+    @Override public void mouseClicked(MouseEvent me)
+            {
+              if(me.getX()>300 && me.getX()<700 && me.getY()>613 && me.getY()<724)  System.exit(1);
+              
+              if(me.getX()>300 && me.getX()<700 && me.getY()>260 && me.getY()<390)  {
+                setVisible(false);
+                //parent.gPanel.setVisible(true);
+                //parent.setContentPane(parent.NewGame);
+              }
+            }
+    
+    @Override public void mouseExited(MouseEvent me){}
+    @Override public void mouseEntered(MouseEvent me){}
+    @Override public void mouseReleased(MouseEvent me){}
+    @Override public void mousePressed(MouseEvent me){}
     
 }

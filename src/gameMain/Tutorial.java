@@ -5,7 +5,7 @@
  */
 package gameMain;
 
-import java.awt.Container;
+import java.awt.event.*;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.MouseAdapter;
@@ -16,17 +16,54 @@ import javax.swing.*;
  *
  * @author Mikołaj
  */
-public class Tutorial extends JPanel {
+public class Tutorial extends JPanel implements KeyListener, MouseListener {
     int i;
+    Random generator = new Random(); 
     public gWindow parent;   
     public Tutorial (gWindow parent)
     {   
     this.parent=parent;
-    Random generator = new Random();    
+    addMouseListener(this);
+    addKeyListener(this);
+        
+    }
     
-        addMouseListener(new MouseAdapter()
-        {
-        public void mouseClicked(MouseEvent me){
+    @Override
+    public void paintComponent (Graphics gs)
+    {
+        Graphics2D g=(Graphics2D)gs;        
+        g.drawImage(gInit.tutorial, 0, 0, null);
+    }
+    
+    @Override public void keyPressed (KeyEvent e)
+    {
+        if (e.getKeyCode() == KeyEvent.VK_A)  {
+            gInit.kick.start();
+                  try {
+                    Thread.sleep(200);
+                    } catch (Exception ex) {
+                        System.err.println(ex.getMessage());
+                    }
+            gInit.reload(gInit.kick);
+        }
+        if (e.getKeyCode()==KeyEvent.VK_D) {
+            gInit.snare.start();
+                  try {
+                    Thread.sleep(200);
+                    } catch (Exception ex) {
+                        System.err.println(ex.getMessage());
+                    }
+            gInit.reload(gInit.snare);
+        }
+        if (e.getKeyCode()==KeyEvent.VK_SPACE) gInit.GameStarted=true;
+
+    }
+    
+    
+    @Override public void keyReleased(KeyEvent e) {}
+    @Override public void keyTyped(KeyEvent e) {}
+    
+    @Override public void mouseClicked(MouseEvent me){
               if(me.getX()>60 && me.getX()<250 && me.getY()>500 && me.getY()<600)  
               {
                   i=generator.nextInt(12)+1;
@@ -71,15 +108,9 @@ public class Tutorial extends JPanel {
               }
               if(me.getX()>60 && me.getX()<250 && me.getY()>663 && me.getY()<750)  System.exit(1);
             }
-        });
-        
-    }
     
-    @Override
-    public void paintComponent (Graphics gs)
-    {
-        Graphics2D g=(Graphics2D)gs;        
-        g.drawImage(gInit.tutorial, 0, 0, null);
-    }
-    
+    @Override public void mouseExited(MouseEvent me){}
+    @Override public void mouseEntered(MouseEvent me){}
+    @Override public void mouseReleased(MouseEvent me){}
+    @Override public void mousePressed(MouseEvent me){}
 }

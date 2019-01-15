@@ -16,7 +16,7 @@ import javax.swing.*;
  *
  * @author Mikołaj
  */
-public class gPanel extends JPanel implements KeyListener, /*ActionListener,*/ MouseListener {    
+public class gPanel extends JPanel implements KeyListener, MouseListener {    
 public gWindow parent;   
     public gPanel (gWindow parent)
     {   
@@ -67,7 +67,12 @@ public gWindow parent;
     
     @Override public void mouseClicked(MouseEvent me)
             {
-                if(me.getX()>717 && me.getX()<937 && me.getY()>643 && me.getY()<728)  System.exit(1);
+                if(me.getX()>717 && me.getX()<937 && me.getY()>643 && me.getY()<728)  
+                {
+                    setVisible(false);
+                    //parent.gPanel.setVisible(true);
+                    //parent.setContentPane(parent.gPanel);
+                }
                 if(me.getX()>0 && me.getX()<512 && me.getY()>0 && me.getY()<385) gInit.player_answer="MOL";
                 if(me.getX()>513 && me.getX()<1024 && me.getY()>0 && me.getY()<385) gInit.player_answer="DUR";
             }

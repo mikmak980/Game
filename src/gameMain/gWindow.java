@@ -26,16 +26,16 @@ public class gWindow extends JFrame {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         //initNewGame();
         //initTutorial();
-        //initMainMenu();
+        initMainMenu();
     }
     
     
     private void initNewGame()
     {
-        gPanel GPanel = new gPanel(this);
-        GPanel.setFocusable(true);
-        GPanel.requestFocusInWindow();
-        add(GPanel);
+        gPanel NewGame = new gPanel(this);
+        NewGame.setFocusable(true);
+        NewGame.requestFocusInWindow();
+        add(NewGame);
         setVisible(true);
             while (gInit.lives!=0)
                 {
