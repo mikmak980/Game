@@ -31,6 +31,8 @@ public gLevel ()
         if (i % 4 == 0) ChordTable[i] = generator.nextInt(12)+1;
     }
     key = KeyTable[generator.nextInt(KeyTable.length)];
+    testPlay(this);
+    mainPlay(this);
 } 
 
     public static void testPlay(gLevel s)

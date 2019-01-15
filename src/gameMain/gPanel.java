@@ -23,6 +23,7 @@ public gWindow parent;
     this.parent=parent;
         gInit.restartGame();
         System.out.println(gInit.lives);
+        this.setLayout(null);
         addMouseListener(this);
         addKeyListener(this);    
     }   
@@ -39,33 +40,17 @@ public gWindow parent;
         g.setColor(Color.WHITE);
         g.drawString(Long.toString(gInit.lives), 312, 672);
         g.drawString(Long.toString(gInit.cur_LVL-1), 312, 715); 
-                while (gInit.lives!=0)
-            {
-                gLevel s = new gLevel();
-                gLevel.testPlay(s);
-                gLevel.mainPlay(s);
-                repaint();
-                s=null;
-            }
-        /*JButton NG = new JButton();
-        NG.setLocation(462, 560);
-        NG.setSize(100, 30);
-        NG.setText("NOWA GRA");
-        add(NG);
-        NG.addActionListener(this);*/
         //gLevel.drawSteps(g);
     }
     
      
     
     
-    @Override
-    public void keyPressed (KeyEvent e)
+    @Override public void keyPressed (KeyEvent e)
     {
         if (e.getKeyCode() == KeyEvent.VK_A)  {
             gInit.player_beat = 1;
             gInit.kick.start();
-           //System.out.println(gInit.player_beat);
         }
         if (e.getKeyCode()==KeyEvent.VK_D) {
             gInit.player_beat = 2;
@@ -74,35 +59,24 @@ public gWindow parent;
         if (e.getKeyCode()==KeyEvent.VK_SPACE) gInit.GameStarted=true;
 
     }
+    
+    
     @Override public void keyReleased(KeyEvent e) {}
     @Override public void keyTyped(KeyEvent e) {}
     
     
-    @Override
-    public void mouseClicked(MouseEvent me){
-        if(me.getX()>717 && me.getX()<937 && me.getY()>643 && me.getY()<728)  System.exit(1);
-        if(me.getX()>0 && me.getX()<512 && me.getY()>0 && me.getY()<385) gInit.player_answer="MOL";
-        if(me.getX()>513 && me.getX()<1024 && me.getY()>0 && me.getY()<385) gInit.player_answer="DUR";
-    }
+    @Override public void mouseClicked(MouseEvent me)
+            {
+                if(me.getX()>717 && me.getX()<937 && me.getY()>643 && me.getY()<728)  System.exit(1);
+                if(me.getX()>0 && me.getX()<512 && me.getY()>0 && me.getY()<385) gInit.player_answer="MOL";
+                if(me.getX()>513 && me.getX()<1024 && me.getY()>0 && me.getY()<385) gInit.player_answer="DUR";
+            }
     
     @Override public void mouseExited(MouseEvent me){}
     @Override public void mouseEntered(MouseEvent me){}
     @Override public void mouseReleased(MouseEvent me){}
     @Override public void mousePressed(MouseEvent me){}
 
-    /*@Override
-    public void actionPerformed(ActionEvent e) {
-
-        if (gInit.lives!=0)
-            {
-                gLevel s = new gLevel();
-                gLevel.testPlay(s);
-                gLevel.mainPlay(s);
-                repaint();
-                s=null;
-            }
-    }*/
-    
 
 }
 

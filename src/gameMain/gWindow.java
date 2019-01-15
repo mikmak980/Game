@@ -22,24 +22,44 @@ public class gWindow extends JFrame {
         setLocation(x,y);
         setResizable(false);
         setUndecorated(true);
-        initGUI();
         //setLayout(new CLSwitcher());
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setVisible(true); //pokaĹĽ okno
-        System.out.println(gInit.lives);
+        //initNewGame();
+        //initTutorial();
+        //initMainMenu();
     }
     
-    private void initGUI(){
-        //setLayout(new GridLayout(1,1)); //ustaw rozkład 
-    gPanel GPanel = new gPanel(this);
-    GPanel.setFocusable(true);
-    GPanel.requestFocusInWindow();
-    add(GPanel);
-    //Tutorial t = new Tutorial(this);
-    //t.setFocusable(true);
-    //t.requestFocusInWindow();
-    //add(t);
-    //MainMenu MM = new MainMenu(this);
-    //add(MM);
+    
+    private void initNewGame()
+    {
+        gPanel GPanel = new gPanel(this);
+        GPanel.setFocusable(true);
+        GPanel.requestFocusInWindow();
+        add(GPanel);
+        setVisible(true);
+            while (gInit.lives!=0)
+                {
+                    gLevel s = new gLevel();
+                    repaint();
+                    s=null;
+                }    
+    }
+    
+    private void initTutorial()
+    {
+        Tutorial t = new Tutorial(this);
+        t.setFocusable(true);
+        t.requestFocusInWindow();
+        add(t);
+        setVisible(true);
+    }
+    
+    private void initMainMenu()
+    {
+        MainMenu MM = new MainMenu(this);
+        MM.setFocusable(true);
+        MM.requestFocusInWindow();
+        add(MM);
+        setVisible(true);
     }
 }
