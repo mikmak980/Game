@@ -15,8 +15,6 @@ import java.io.*;
  */
 public class gInit {
 
-public final static long no_LVL=30;
-
 public final static long no_STEP=16;
 
 public static int cur_LVL;

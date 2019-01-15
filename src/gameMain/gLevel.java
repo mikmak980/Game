@@ -110,8 +110,12 @@ public gLevel ()
                 if (s.DrumTable[i]!=s.player_beat_table[i]) gInit.RoundCompleted=false;
                 s.player_beat_table[i]=0;
             }
-            if (gInit.RoundCompleted==false) gInit.lives--;
+            if (gInit.RoundCompleted==false) {
+                gInit.lives--;
+                gInit.cur_LVL--;
+            }
             gInit.RoundCompleted=true;
+            gInit.cur_LVL++;
             
             
         //} catch (Exception e) {

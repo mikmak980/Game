@@ -17,7 +17,7 @@ public class Game {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        int gameWidth=1024;
+    int gameWidth=1024;
     int gameHeight=768;
         
     int screenWidth=Toolkit.getDefaultToolkit().getScreenSize().width;
