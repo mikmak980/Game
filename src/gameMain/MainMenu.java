@@ -20,6 +20,7 @@ public gWindow parent;
     public MainMenu (gWindow parent)
     {
         this.parent=parent;
+        setVisible(true);
         addMouseListener(this);
     }
     
@@ -35,8 +36,8 @@ public gWindow parent;
               
               if(me.getX()>300 && me.getX()<700 && me.getY()>260 && me.getY()<390)  {
                 setVisible(false);
-                //parent.gPanel.setVisible(true);
-                //parent.setContentPane(parent.NewGame);
+                parent.NewGame.setVisible(true);
+                parent.setContentPane(parent.NewGame);
               }
             }
     

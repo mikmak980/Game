@@ -13,6 +13,8 @@ import javax.swing.JFrame;
  * @author Mikołaj
  */
 public class gWindow extends JFrame {
+    public gPanel NewGame;
+    public MainMenu MM;
     
         public gWindow(int width, int height, int x, int y)
     {
@@ -25,8 +27,12 @@ public class gWindow extends JFrame {
         //setLayout(new CLSwitcher());
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         //initNewGame();
+        NewGame = new gPanel(this);
+        add(NewGame);
+        MM = new MainMenu(this);
+        add(MM);
         //initTutorial();
-        initMainMenu();
+        //initMainMenu();
     }
     
     

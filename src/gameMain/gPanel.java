@@ -21,6 +21,7 @@ public gWindow parent;
     public gPanel (gWindow parent)
     {   
     this.parent=parent;
+        setVisible(false);
         gInit.restartGame();
         System.out.println(gInit.lives);
         this.setLayout(null);
