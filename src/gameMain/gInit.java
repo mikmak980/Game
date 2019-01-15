@@ -10,57 +10,45 @@ import javax.swing.ImageIcon;
 import javax.sound.sampled.*;
 import java.io.*;
 /**
- *
+ * Klasa pomocnicza, ładuje pliki operuje zmiennymi sterującymi itd.
  * @author Mikołaj
  */
 public class gInit {
-
-public final static long no_STEP=16;
-
+/** Określa aktualny poziom gracza, a także niebezpośrednio, liczbę punktów*/
 public static int cur_LVL;
-
+/** Liczba "żyć"*/
 public static long lives;
-
+/** Odpowiedź gracza na pytanie dotycząca tonacji zagranych dźwięków*/
 public static String player_answer;
-
+/** Odpowiedź gracza na sprawdzane akurat uderzenie perkusji*/
 public static short player_beat;
-
-public static boolean RoundStarted;
-
-public static boolean GameStarted;
-
+/** Zmienna mierząca upływ czasu w którym można "wklepać" kolejne uderzenie*/
 public static long actionTime;
-
-public static long points;
-
+/** Zmienna kontrolna sprawdzająca status ukończenia poziomu*/
 public static boolean RoundCompleted;
 
-
+/** Tło menu głównego*/
 public static Image main_menu_bg;
-
+/** Tło menu gry*/
 public static Image new_game_bg;
-
-public static Image step_crcl;
-
-public static Image step_crcl_comp;
-
+/** Tło samouczka*/
 public static Image tutorial;
-
+/** Tablica w którą wczytywane są akordy*/
 public static Clip chord[];
-
+/** Klip uderzenia stopy*/
 public static Clip kick;
-
+/** Klip uderzenia werbla*/
 public static Clip snare;
-
+/** Klip uderzenia talerza, służącego za metronom*/
 public static Clip click;
     
-
+/**
+* Metoda wczytująca potrzebne dane
+*/
 public static void loadData()
 {
     main_menu_bg = loadImage("images/MainMenu.png");
     new_game_bg = loadImage("images/GameBG.png");
-    step_crcl = loadImage("images/step_crcl.png");
-    step_crcl_comp = loadImage("images/step_crcl_comp.png");
     tutorial = loadImage("images/Tutorial.png");
     chord = new Clip[25];
     //akodry durowe
@@ -96,11 +84,17 @@ public static void loadData()
     
 }
 
-
+/**
+* Metoda pomocnicza do ładowania obrazów
+*/
 
 public static Image loadImage(String fileName) {
         return new ImageIcon(fileName).getImage();
     }
+
+/**
+* Metoda pomocnicza do ładowania dźwięków
+*/
 
 public static Clip loadClip( String filename )
 {
@@ -118,17 +112,19 @@ public static Clip loadClip( String filename )
     }
     return input;
 }
-
+/**
+* Metoda zerująca wszystkie zmienne sterujące do gry
+*/
     public static void restartGame()
     {
        cur_LVL=1;
        player_answer="NULL";
        lives=10;
-       RoundStarted=true;
-       GameStarted=false;
        player_beat=0;
     }
-    
+/**
+* Metoda "przeładowująca" dany dźwięk tak, aby był gotowy do ponownego odtworzenia
+*/    
     public static void reload(Clip c) {
     c.stop();
     c.flush();

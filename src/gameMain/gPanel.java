@@ -13,27 +13,27 @@ import java.awt.Font;
 import javax.swing.*;
 
 /**
- *
+ * Klasa głównego okna gry.&nbsp; Tak jak w MainMenu, również przekazuję tu parametry do klasy ramki.&nbsp; By przełączać panele w tym niedziałającym trybie należy odkomentować setVisible(false);
  * @author Mikołaj
  */
-public class gPanel extends JPanel implements KeyListener, MouseListener {    
-public gWindow parent;   
+public class gPanel extends JPanel implements KeyListener, MouseListener {
+/** Referencje do obiektu ramki*/    
+public gWindow parent;
+/** W konstruktorze następuje dodanie referencji do obiektu ramki */
     public gPanel (gWindow parent)
     {   
     this.parent=parent;
-        setVisible(false);
+        //setVisible(false);
         gInit.restartGame();
-        System.out.println(gInit.lives);
         this.setLayout(null);
         addMouseListener(this);
-        addKeyListener(this);    
+        addKeyListener(this);           
     }   
         
     
     
-    
-    @Override
-    public void paintComponent (Graphics gs)
+    /** Rysowanie tła gry, a także liczników życ i punktów*/
+    @Override public void paintComponent (Graphics gs)
     {
         Graphics2D g=(Graphics2D)gs;        
         g.drawImage(gInit.new_game_bg, 0, 0, null);
@@ -41,12 +41,11 @@ public gWindow parent;
         g.setColor(Color.WHITE);
         g.drawString(Long.toString(gInit.lives), 312, 672);
         g.drawString(Long.toString(gInit.cur_LVL-1), 312, 715); 
-        //gLevel.drawSteps(g);
     }
     
      
     
-    
+    /** Obsługa zdarzeń klawiatury.&nbsp; Klawisze A i D zmieniają parametry zmiennej kontrolnej, a także odtwarzają dźwięki*/
     @Override public void keyPressed (KeyEvent e)
     {
         if (e.getKeyCode() == KeyEvent.VK_A)  {
@@ -57,30 +56,34 @@ public gWindow parent;
             gInit.player_beat = 2;
             gInit.snare.start();
         }
-        if (e.getKeyCode()==KeyEvent.VK_SPACE) gInit.GameStarted=true;
 
     }
     
-    
+    /** Nadpisanie interfejsu KeyListener*/
     @Override public void keyReleased(KeyEvent e) {}
+    /** Nadpisanie interfejsu KeyListener*/
     @Override public void keyTyped(KeyEvent e) {}
     
-    
+    /**Obsługa zdarzenia kliknięcia.&nbsp; kliknięcia w odpowiednie pola wyłączają grę, bądź zmieniają odpowiedź gracza na pytanie o melodię*/
     @Override public void mouseClicked(MouseEvent me)
             {
                 if(me.getX()>717 && me.getX()<937 && me.getY()>643 && me.getY()<728)  
                 {
-                    setVisible(false);
-                    //parent.gPanel.setVisible(true);
-                    //parent.setContentPane(parent.gPanel);
+                    //setVisible(false);
+                    //parent.MM.setVisible(true);
+                    //parent.setContentPane(parent.MM);
+                    System.exit(1);
                 }
                 if(me.getX()>0 && me.getX()<512 && me.getY()>0 && me.getY()<385) gInit.player_answer="MOL";
                 if(me.getX()>513 && me.getX()<1024 && me.getY()>0 && me.getY()<385) gInit.player_answer="DUR";
             }
-    
+    /** Nadpisanie interfejsu MouseListener*/
     @Override public void mouseExited(MouseEvent me){}
+    /** Nadpisanie interfejsu MouseListener*/
     @Override public void mouseEntered(MouseEvent me){}
+    /** Nadpisanie interfejsu MouseListener*/
     @Override public void mouseReleased(MouseEvent me){}
+    /** Nadpisanie interfejsu MouseListener*/
     @Override public void mousePressed(MouseEvent me){}
 
 

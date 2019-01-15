@@ -7,13 +7,13 @@ package gameMain;
 import java.awt.*;
 
 /**
- *
+ * Główna metoda, która uruchamia grę
  * @author Mikołaj
  */
 public class Game {
 
     /**
-     * @param args the command line arguments
+     * Zasugerowałem się przykładem z enauczania, by pobrać dane ekranu
      */
     public static void main(String[] args) {
         // TODO code application logic here
@@ -25,7 +25,6 @@ public class Game {
     int xCenter=(screenWidth-gameWidth)/2;
     int yCenter=(screenHeight-gameHeight)/2;
         gWindow window=new gWindow(gameWidth,gameHeight,xCenter,yCenter);
-        //CLSwitcher CLS = new CLSwitcher();
     }
     
 }

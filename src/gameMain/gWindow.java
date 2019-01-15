@@ -5,17 +5,24 @@
  */
 package gameMain;
 
-import java.awt.Toolkit;
 import javax.swing.JFrame;
 
 /**
- *
+ * Klasa okna gry.&nbsp; 
+ * Niestety, prawdopodobnie z powodu źle zaprojektowanej architektury, albo działa sama gra, albo przełączanie okien, wraz z samouczkiem.&nbsp;
+ * W tej drugiej wersji należy wykomentować linie "NewGame.setFocusable(true);", "NewGame.requestFocusInWindow();" oraz "initNewGame();"&nbsp;
+ * a także odkomentować zaznaczone linie.&nbsp;
+ * Pola paneli są publiczne w celu ich przełączania
  * @author Mikołaj
  */
 public class gWindow extends JFrame {
     public gPanel NewGame;
     public MainMenu MM;
-    
+    public Tutorial TT;   
+    /** 
+     * Metody Focusable pozwalają przejąć kontrolę nad KeyListenerem
+     * Parametry określają miejsce i rozdzielczość rysowania okna
+     */
         public gWindow(int width, int height, int x, int y)
     {
         super();
@@ -24,48 +31,28 @@ public class gWindow extends JFrame {
         setLocation(x,y);
         setResizable(false);
         setUndecorated(true);
-        //setLayout(new CLSwitcher());
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        //initNewGame();
         NewGame = new gPanel(this);
         add(NewGame);
-        MM = new MainMenu(this);
-        add(MM);
-        //initTutorial();
-        //initMainMenu();
-    }
-    
-    
-    private void initNewGame()
-    {
-        gPanel NewGame = new gPanel(this);
+        //TT = new Tutorial(this);
+        //add(TT);
+        //MM = new MainMenu(this);
+        //add(MM);
         NewGame.setFocusable(true);
         NewGame.requestFocusInWindow();
-        add(NewGame);
         setVisible(true);
-            while (gInit.lives!=0)
-                {
-                    gLevel s = new gLevel();
-                    repaint();
-                    s=null;
-                }    
+        initNewGame();
     }
     
-    private void initTutorial()
+    /** Metoda uruchamiająca logikę gry*/
+    private void initNewGame()
     {
-        Tutorial t = new Tutorial(this);
-        t.setFocusable(true);
-        t.requestFocusInWindow();
-        add(t);
-        setVisible(true);
-    }
-    
-    private void initMainMenu()
-    {
-        MainMenu MM = new MainMenu(this);
-        MM.setFocusable(true);
-        MM.requestFocusInWindow();
-        add(MM);
-        setVisible(true);
+        while (gInit.lives!=0)
+            {
+                gLevel s = new gLevel();
+                repaint();
+                s=null;
+            }
+        System.exit(1);
     }
 }

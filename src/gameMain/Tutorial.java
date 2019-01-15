@@ -13,56 +13,32 @@ import java.awt.event.MouseEvent;
 import java.util.Random;
 import javax.swing.*;
 /**
- *
+ * Klasa okna samouczka.&nbsp; Tak jak w MainMenu, również przekazuję tu parametry do klasy ramki
  * @author Mikołaj
  */
-public class Tutorial extends JPanel implements KeyListener, MouseListener {
+public class Tutorial extends JPanel implements  MouseListener {
     int i;
+    /** Generator potrzebny do losowania przykładowych akordów*/
     Random generator = new Random(); 
+    /** Referencje do obiektu ramki*/  
     public gWindow parent;   
+    /** W konstruktorze następuje dodanie referencji do obiektu ramki */
     public Tutorial (gWindow parent)
     {   
     this.parent=parent;
+    setVisible(false);
     addMouseListener(this);
-    addKeyListener(this);
         
     }
     
-    @Override
-    public void paintComponent (Graphics gs)
+    /** Rysowanie tła*/
+    @Override public void paintComponent (Graphics gs)
     {
         Graphics2D g=(Graphics2D)gs;        
         g.drawImage(gInit.tutorial, 0, 0, null);
     }
     
-    @Override public void keyPressed (KeyEvent e)
-    {
-        if (e.getKeyCode() == KeyEvent.VK_A)  {
-            gInit.kick.start();
-                  try {
-                    Thread.sleep(200);
-                    } catch (Exception ex) {
-                        System.err.println(ex.getMessage());
-                    }
-            gInit.reload(gInit.kick);
-        }
-        if (e.getKeyCode()==KeyEvent.VK_D) {
-            gInit.snare.start();
-                  try {
-                    Thread.sleep(200);
-                    } catch (Exception ex) {
-                        System.err.println(ex.getMessage());
-                    }
-            gInit.reload(gInit.snare);
-        }
-        if (e.getKeyCode()==KeyEvent.VK_SPACE) gInit.GameStarted=true;
-
-    }
-    
-    
-    @Override public void keyReleased(KeyEvent e) {}
-    @Override public void keyTyped(KeyEvent e) {}
-    
+    /** Obsługa zdarzeń ekranu, można odtworzyć przykładowe dźwieki, a także dostępną perkusję*/
     @Override public void mouseClicked(MouseEvent me){
               if(me.getX()>60 && me.getX()<250 && me.getY()>500 && me.getY()<600)  
               {
@@ -106,11 +82,19 @@ public class Tutorial extends JPanel implements KeyListener, MouseListener {
                     }
                   gInit.reload(gInit.snare);
               }
-              if(me.getX()>60 && me.getX()<250 && me.getY()>663 && me.getY()<750)  System.exit(1);
+              if(me.getX()>60 && me.getX()<250 && me.getY()>663 && me.getY()<750)  
+              {
+                setVisible(false);
+                parent.MM.setVisible(true);
+                parent.setContentPane(parent.MM);
+              }
             }
-    
+    /** Nadpisanie interfejsu MouseListener*/
     @Override public void mouseExited(MouseEvent me){}
+    /** Nadpisanie interfejsu MouseListener*/
     @Override public void mouseEntered(MouseEvent me){}
+    /** Nadpisanie interfejsu MouseListener*/
     @Override public void mouseReleased(MouseEvent me){}
+    /** Nadpisanie interfejsu MouseListener*/
     @Override public void mousePressed(MouseEvent me){}
 }
